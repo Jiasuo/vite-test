@@ -1,8 +1,6 @@
 <script setup>
 import { reactive, computed, ref, onMounted, onBeforeUnmount, watchEffect } from 'vue';
 
-const L = ref(null), M = ref(null), S = ref(null)
-
 const currentSize = ref('L')
 
 const screenSize = reactive({
@@ -64,7 +62,7 @@ watchEffect(() => {
                 Screen width: <input type="number" v-model="screenSize.l"
                     @focus="currentSize = 'L'; $event.target.select()"> px
             </div>
-            <div class="width">Size: <input type="number" v-model="size.l" ref="L"
+            <div class="width">Size: <input type="number" v-model="size.l"
                     @focus="currentSize = 'L'; $event.target.select()"> px</div>
             <div class="result">{{ result.l }}vw</div>
         </div>
@@ -74,7 +72,7 @@ watchEffect(() => {
                 Screen width: <input type="number" v-model="screenSize.m"
                     @focus="currentSize = 'M'; $event.target.select()"> px
             </div>
-            <div class="width">Size: <input type="number" v-model="size.m" ref="M"
+            <div class="width">Size: <input type="number" v-model="size.m"
                     @focus="currentSize = 'M'; $event.target.select()"> px</div>
             <div class="result">{{ result.m }}vw</div>
         </div>
@@ -84,7 +82,7 @@ watchEffect(() => {
                 Screen width: <input type="number" v-model="screenSize.s"
                     @focus="currentSize = 'S'; $event.target.select()"> px
             </div>
-            <div class="width">Size: <input type="number" v-model="size.s" ref="S"
+            <div class="width">Size: <input type="number" v-model="size.s"
                     @focus="currentSize = 'S'; $event.target.select()"> px</div>
             <div class="result">{{ result.s }}vw</div>
         </div>
