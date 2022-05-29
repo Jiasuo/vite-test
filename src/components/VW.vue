@@ -46,12 +46,14 @@ onBeforeUnmount(() => {
 })
 
 watchEffect(() => {
-    if (currentSize.value === 'L') {
+    if (currentSize.value === 'L' && result.value.l) {
         navigator.clipboard.writeText(`${result.value.l}vw`);
-    } else if (currentSize.value === 'M') {
+    } else if (currentSize.value === 'M' && result.value.m) {
         navigator.clipboard.writeText(`${result.value.m}vw`);
     } else {
-        navigator.clipboard.writeText(`${result.value.s}vw`);
+        if(result.value.s){
+            navigator.clipboard.writeText(`${result.value.s}vw`);
+        }
     }
 })
 </script>
@@ -92,12 +94,6 @@ watchEffect(() => {
 </template>
 
 <style scoped>
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .container {
     height: 100vh;
     display: grid;
@@ -120,6 +116,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .vw.l {
