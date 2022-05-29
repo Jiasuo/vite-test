@@ -1,10 +1,12 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
+import "./assets/css/reset.css"
+import VW from './components/VW.vue';
+
 </script>
 
 <template>
 <div id="root">
-  <HelloWorld />
+  <VW />
 </div>
 </template>
 
