@@ -1,14 +1,15 @@
 <script setup>
-import {onMounted} from "vue"
-import gsap from "gsap"
-onMounted(() => {
-  gsap.from("#target", {x:-100})
-})
+import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-<div id="target">Hello world</div>
+<div id="root">
+  <HelloWorld />
+</div>
 </template>
 
 <style>
+#root{
+  min-height: 100vh;
+}
 </style>
