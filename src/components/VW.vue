@@ -28,8 +28,6 @@ function changeInputSize(e) {
 }
 
 onMounted(() => {
-    // Focus on the input (UX)
-    L.value.focus()
     // Resize inputs to fit content
     const inputs = document.querySelectorAll('input');
     inputs.forEach((i) => {
@@ -46,12 +44,12 @@ onBeforeUnmount(() => {
 })
 
 watchEffect(() => {
-    if (currentSize.value === 'L' && result.value.l) {
+    if (currentSize.value === 'L' && result.value.l !== 0) {
         navigator.clipboard.writeText(`${result.value.l}vw`);
-    } else if (currentSize.value === 'M' && result.value.m) {
+    } else if (currentSize.value === 'M' && result.value.m !== 0) {
         navigator.clipboard.writeText(`${result.value.m}vw`);
     } else {
-        if(result.value.s){
+        if(result.value.s !== 0){
             navigator.clipboard.writeText(`${result.value.s}vw`);
         }
     }
