@@ -1,12 +1,12 @@
 <script setup>
 import "./assets/css/reset.css"
-import VW from './components/VW.vue';
+import Scroll from "./components/Scroll.vue";
 
 </script>
 
 <template>
 <div id="root">
-  <VW />
+  <Scroll />
 </div>
 </template>
 
