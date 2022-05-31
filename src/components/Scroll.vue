@@ -1,73 +1,51 @@
 <script setup>
-import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
-import { onBeforeUnmount, onMounted, ref } from "vue";
-gsap.registerPlugin(ScrollTrigger)
-
-const d1 = ref(null);
-const d2 = ref(null)
-const d3 = ref(null)
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onMounted } from "vue";
 
 onMounted(() => {
-    gsap.from(d2.value, {
-        scrollTrigger: {
-            trigger: d2.value,
-            toggleActions: "restart pause reverse pause",
-            start: "top center",
-            end: ".block.d3",
-            scrub: 2,
-            pin: true,
-            markers: true
-        },
-        backgroundColor: "#000",
-        duration: 2,
-        // ease: "bounce",
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray("section").forEach(p => {
+    ScrollTrigger.create({
+      animation:gsap.to(p, {xPercent: -100, scaleX: 0}),
+      trigger: p,
+      start: "top top",
+      scrub: true,
+      pin: true,
+      pinSpacing: false
     })
-    gsap.ticker.add(showFrame)
-})
+  })
+});
 
-onBeforeUnmount(() => {
-    gsap.ticker.remove(showFrame)
-})
-
-function showFrame(_, elapsed, frame){
-    console.log(`[${frame}]: ${elapsed}ms`);
-}
 </script>
 
 <template>
-    <div class="block d1">
-        <div ref="d1">Hello</div>
-    </div>
-    <div class="block d2">
-        <div ref="d2">I'm</div>
-    </div>
-    <div class="block d3">
-        <div ref="d3">Jack</div>
-    </div>
+  <section class="s1">1</section>
+  <section class="s2">2</section>
+  <section class="s3">3</section>
+  <section class="s4">4</section>
 </template>
 
 <style scoped>
-.block {
+  section{
+    overflow-x: hidden;
     height: 100vh;
-    color: white;
+    font-size: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-}
-
-.d1 {
+  }
+  .s1{
+    background: green;
+  }
+  .s2{
+    background-color: red;
+  }
+  .s3{
     background-color: blue;
-}
+  }
 
-.d2 {
+  .s4{
     background-color: orange;
-}
-
-.d3 {
-    background-color: green;
-}
+  }
 </style>
